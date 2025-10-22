@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://framerusercontent.com/images/kQkF4Jt4p3qQ1Z2t0g2F7zW3aI.png" alt="Logo do Pixelteca" width="200"/>
+  <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e245a44059d332616f7a6275b2218f27" alt="Logo do Pixelteca" width="200"/>
   <br>
   <h1>🎮 Pixelteca → Seu Letterboxd para Games</h1>
   <p>Bem-vindo ao Pixelteca, uma plataforma social criada para amantes de videogames. Aqui você pode registrar sua jornada gamer, avaliar os jogos que jogou, escrever análises detalhadas e descobrir o que seus amigos e a comunidade estão jogando — tudo em um só lugar.</p>
