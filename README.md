@@ -1,42 +1,46 @@
-# 🚌 Aplicativo de Transporte Público MelissaTUR → Campo Mourão - Paraná
-
-Este é um aplicativo completo de transporte público que permite aos usuários visualizar rotas de ônibus em tempo real, gerenciar cartões de transporte, realizar recargas com Mercado Pago (cartão ou Pix), solicitar cartões especiais e muito mais — tudo isso em um ambiente moderno, acessível e intuitivo.
+<div align="center">
+  <img src="https://framerusercontent.com/images/kQkF4Jt4p3qQ1Z2t0g2F7zW3aI.png" alt="Logo do Pixelteca" width="200"/>
+  <br>
+  <h1>🎮 Pixelteca → Seu Letterboxd para Games</h1>
+  <p>Bem-vindo ao Pixelteca, uma plataforma social criada para amantes de videogames. Aqui você pode registrar sua jornada gamer, avaliar os jogos que jogou, escrever análises detalhadas e descobrir o que seus amigos e a comunidade estão jogando — tudo em um só lugar.</p>
+</div>
 
 ---
 
 ## 🚀 Funcionalidades Principais
 
-### 📍 1. Visualização de Rotas e Ônibus em Tempo Real
-- Mapa interativo com todas as rotas de ônibus disponíveis
-- Localização em tempo real dos ônibus usando a API bus2
-- Destaque de rotas e pontos de parada ao selecionar uma linha
-- Atualização automática da posição dos veículos (a cada 30 segundos)
+### ✍️ 1. Análises e Notas Detalhadas
+✨ **Compartilhe Sua Opinião:**
+  - ⭐ **Sistema de Notas:** Avalie qualquer jogo com um sistema de 1 a 5 estrelas para expressar rapidamente sua opinião.
+  - 📝 **Análises Completas:** Escreva textos detalhados sobre suas experiências, pontos positivos e negativos.
+  - ✏️ **Edição Simples:** Mudou de ideia? Edite suas análises a qualquer momento para refinar sua crítica.
+  - 🗑️ **Controle Total:** Você tem total liberdade para remover suas análises quando quiser.
 
 ---
 
-### 📝 2. Cadastro de Usuário com CPF
-- Registro de novos usuários com CPF brasileiro
-- Validação de formato e unicidade do CPF
-- Armazenamento seguro de dados pessoais
-- Confirmação de cadastro e acesso a funcionalidades exclusivas
+### 👍 2. Interação com a Comunidade
+🗳️ **Destaque as Melhores Análises:**
+  - ✔️ **Voto de Utilidade:** Achou uma análise perspicaz e bem escrita? Marque-a como "útil" para que outros jogadores a vejam.
+  - 📊 **Contador em Tempo Real:** Veja quantas pessoas concordaram com uma análise através de um contador de votos visível.
+  - 💡 **Ajude Outros Jogadores:** Ao votar, você ajuda a filtrar o conteúdo mais relevante, melhorando a experiência de todos.
+  - 🏆 **Reconhecimento:** As análises mais úteis ganham destaque, dando reconhecimento aos melhores críticos da plataforma.
 
 ---
 
-### 💳 3. Recarga do Cartão com Mercado Pago
-- Integração oficial com a API do Mercado Pago
-- Suporte a:
-  - Cartão de crédito
-  - Cartão de débito
-  - Pix (com QR Code ou chave)
-- Atualização automática do saldo após confirmação de pagamento
-- Histórico completo de transações no app
+### ❤️ 3. Organize Sua Jornada Gamer
+📚 **Sua Biblioteca Pessoal de Jogos:**
+  - ❤️ **Lista de Favoritos:** Marque seus jogos preferidos com um coração e crie uma galeria especial em seu perfil.
+  - ✅ **Listas Dinâmicas:** Organize-se com listas essenciais:
+      - **Joguei:** Seu histórico completo de jogos finalizados.
+      - **Jogando:** O que você está explorando no momento.
+      - **Quero Jogar:** Sua *watchlist* para futuras aventuras.
+  - 🔍 **Acesso Rápido:** Encontre facilmente seus jogos favoritos e listas personalizadas diretamente no seu perfil.
 
 ---
 
-### 🎫 4. Solicitação de Cartões Especiais
-- Solicitação digital de cartões para:
-  - Idosos
-  - Pessoas com deficiência (PCD)
-  - Estudantes
-- Upload de documentos diretamente pelo app
-- Validação de elegibilidade e acompanhamento do status da solicitação
+### 👤 4. Perfil de Usuário e Cadastro Seguro
+🔐 **Seu Espaço no Universo Gamer:**
+  - ✍️ **Cadastro Rápido:** Crie sua conta em segundos usando apenas nome de usuário, e-mail e senha.
+  - 🔒 **Login Seguro:** Acesse sua conta com segurança para gerenciar suas atividades e listas.
+  - 🖼️ **Perfil Personalizado:** Seu perfil é o seu hub, exibindo suas análises recentes, jogos favoritos e estatísticas.
+  - 📊 **Visualização de Atividade:** Acompanhe tudo o que você fez na plataforma de forma organizada e visual.
