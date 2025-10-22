@@ -1,0 +1,200 @@
+/* Variáveis CSS para facilitar a manutenção das cores */
+:root {
+    --bg-color: #1a1a2e; /* Azul escuro quase preto */
+    --card-bg: #21213b;  /* Azul escuro ligeiramente mais claro */
+    --text-color: #e0e0e0; /* Cinza claro para o texto */
+    --placeholder-color: #8b8b9e; /* Cinza para placeholders */
+    --accent-blue: #4a90e2; /* Azul vibrante (inspirado na logo) */
+    --accent-green: #7ed321; /* Verde vibrante (inspirado na logo) */
+    --accent-purple: #9027b4; /* Roxo vibrante (inspirado na logo) */
+    --button-gradient: linear-gradient(90deg, #4a90e2 0%, #7ed321 100%); /* Gradiente do botão */
+    --button-hover-gradient: linear-gradient(90deg, #3a7ecd 0%, #6bc11e 100%); /* Gradiente do botão no hover */
+    --tab-active-border: #4a90e2; /* Cor da borda da aba ativa */
+}
+
+/* Reset básico e tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Espaço entre a logo e o card do formulário */
+    width: 100%;
+    max-width: 900px; /* Largura máxima para a tela */
+}
+
+.logo-area {
+    text-align: center;
+}
+
+.logo {
+    /* LOGO MAIOR PARA MELHOR DESTAQUE */
+    width: 200px; 
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.form-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 450px; /* Largura máxima do card do formulário */
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+}
+
+.tab-button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button.active {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--tab-active-border);
+}
+
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: #333355; /* Um tom mais escuro para os inputs */
+    border: 1px solid #444466;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: var(--placeholder-color);
+    opacity: 0.7;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--button-gradient);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background: var(--button-hover-gradient);
+    transform: translateY(-2px);
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--accent-green);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* Lado a lado em telas maiores */
+        justify-content: center;
+        gap: 80px;
+    }
+
+    .logo-area {
+        flex: 1;
+        max-width: 350px; /* Largura da área da logo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-card {
+        flex: 1;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 30px 20px;
+    }
+    
+    .logo {
+        width: 150px; /* Logo um pouco menor em telas pequenas */
+    }
+
+    .tab-button {
+        font-size: 1em;
+        padding: 12px 0;
+    }
+}
