@@ -1,6 +1,6 @@
 /* Variáveis CSS para facilitar a manutenção das cores */
 :root {
-    --bg-color: #1a1a2e; /* Azul escuro quase preto */
+    --bg-color: #0a101e; /* Azul escuro quase preto */
     --card-bg: #21213b;  /* Azul escuro ligeiramente mais claro */
     --text-color: #e0e0e0; /* Cinza claro para o texto */
     --placeholder-color: #8b8b9e; /* Cinza para placeholders */
@@ -197,4 +197,5 @@ body {
         font-size: 1em;
         padding: 12px 0;
     }
+
 }
