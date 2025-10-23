@@ -1,14 +1,28 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // Allow cross-origin for local testing; remove in production
+header('Access-Control-Allow-Origin: *'); // Remove in production
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// IGDB credentials (replace with your real ones from igdb.com and twitch.tv)
+// Database configuration (replace with your details; secure this!)
+$host = 'localhost'; // Or your DB host
+$dbname = 'pixelteca_db';
+$username = 'root'; // Default for XAMPP; change for production
+$password = ''; // Default for XAMPP; set a password in production
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
+    exit;
+}
+
+// IGDB credentials (replace with real ones)
 $clientId = 'YOUR_CLIENT_ID';
 $clientSecret = 'YOUR_CLIENT_SECRET';
 
-// Function to get access token
+// Function to get IGDB access token (unchanged)
 function getAccessToken($clientId, $clientSecret) {
     $url = 'https://id.twitch.tv/oauth2/token';
     $data = [
@@ -32,7 +46,7 @@ function getAccessToken($clientId, $clientSecret) {
     return $json['access_token'] ?? null;
 }
 
-// Handle GET: Fetch games
+// Handle GET: Fetch games (unchanged, but now with DB connection available)
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $token = getAccessToken($clientId, $clientSecret);
     if (!$token) {
@@ -58,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo $result;
 }
 
-// Handle POST: Save rating/review
+// Handle POST: Save rating/review to DB
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
     if (!$input || !isset($input['game'], $input['rating'], $input['review'])) {
@@ -66,15 +80,12 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $reviewsFile = 'reviews.json';
-    $reviews = file_exists($reviewsFile) ? json_decode(file_get_contents($reviewsFile), true) : [];
-    $reviews[] = [
-        'game' => $input['game'],
-        'rating' => $input['rating'],
-        'review' => $input['review'],
-        'date' => date('Y-m-d H:i:s')
-    ];
-    file_put_contents($reviewsFile, json_encode($reviews, JSON_PRETTY_PRINT));
-    echo json_encode(['success' => true]);
+    try {
+        $stmt = $pdo->prepare("INSERT INTO game_reviews (game_name, rating, review) VALUES (?, ?, ?)");
+        $stmt->execute([$input['game'], $input['rating'], $input['review']]);
+        echo json_encode(['success' => true]);
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'error' => 'Failed to save review: ' . $e->getMessage()]);
+    }
 }
 ?>
