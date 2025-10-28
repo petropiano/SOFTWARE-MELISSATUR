@@ -4,11 +4,10 @@ header('Access-Control-Allow-Origin: *'); // Remove in production
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Database configuration (replace with your details; secure this!)
-$host = 'localhost'; // Or your DB host
+$host = 'localhost'; 
 $dbname = 'pixelteca_db';
-$username = 'root'; // Default for XAMPP; change for production
-$password = ''; // Default for XAMPP; set a password in production
+$username = 'root'; 
+$password = ''; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
