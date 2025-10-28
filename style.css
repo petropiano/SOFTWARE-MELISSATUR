@@ -1,18 +1,17 @@
-/* Variáveis CSS para facilitar a manutenção das cores */
 :root {
-    --bg-color: #0a101e; /* Azul escuro quase preto */
-    --card-bg: #21213b;  /* Azul escuro ligeiramente mais claro */
-    --text-color: #e0e0e0; /* Cinza claro para o texto */
-    --placeholder-color: #8b8b9e; /* Cinza para placeholders */
-    --accent-blue: #4a90e2; /* Azul vibrante (inspirado na logo) */
-    --accent-green: #7ed321; /* Verde vibrante (inspirado na logo) */
-    --accent-purple: #9027b4; /* Roxo vibrante (inspirado na logo) */
-    --button-gradient: linear-gradient(90deg, #4a90e2 0%, #7ed321 100%); /* Gradiente do botão */
-    --button-hover-gradient: linear-gradient(90deg, #3a7ecd 0%, #6bc11e 100%); /* Gradiente do botão no hover */
-    --tab-active-border: #4a90e2; /* Cor da borda da aba ativa */
+    --bg-color: #0a101e; 
+    --card-bg: #21213b;  
+    --text-color: #e0e0e0; 
+    --placeholder-color: #8b8b9e; 
+    --accent-blue: #4a90e2; 
+    --accent-green: #7ed321; 
+    --accent-purple: #9027b4; 
+    --button-gradient: linear-gradient(90deg, #4a90e2 0%, #7ed321 100%);
+    --button-hover-gradient: linear-gradient(90deg, #3a7ecd 0%, #6bc11e 100%); 
+    --tab-active-border: #4a90e2; /
 }
 
-/* Reset básico e tipografia */
+
 * {
     margin: 0;
     padding: 0;
@@ -34,9 +33,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Espaço entre a logo e o card do formulário */
+    gap: 40px; 
     width: 100%;
-    max-width: 900px; /* Largura máxima para a tela */
+    max-width: 900px; 
 }
 
 .logo-area {
@@ -44,7 +43,6 @@ body {
 }
 
 .logo {
-    /* LOGO MAIOR PARA MELHOR DESTAQUE */
     width: 200px; 
     height: auto;
     margin-bottom: 15px;
@@ -56,7 +54,7 @@ body {
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 450px; /* Largura máxima do card do formulário */
+    max-width: 450px; 
 }
 
 .tabs {
@@ -110,7 +108,7 @@ body {
 .input-group input[type="password"] {
     width: 100%;
     padding: 14px 18px;
-    background-color: #333355; /* Um tom mais escuro para os inputs */
+    background-color: #333355;
     border: 1px solid #444466;
     border-radius: 10px;
     color: var(--text-color);
@@ -165,14 +163,14 @@ body {
 /* Responsividade */
 @media (min-width: 768px) {
     .container {
-        flex-direction: row; /* Lado a lado em telas maiores */
+        flex-direction: row; 
         justify-content: center;
         gap: 80px;
     }
 
     .logo-area {
         flex: 1;
-        max-width: 350px; /* Largura da área da logo */
+        max-width: 350px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -190,7 +188,7 @@ body {
     }
     
     .logo {
-        width: 150px; /* Logo um pouco menor em telas pequenas */
+        width: 150px; 
     }
 
     .tab-button {
@@ -199,3 +197,4 @@ body {
     }
 
 }
+
