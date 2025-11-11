@@ -6,6 +6,26 @@
     <title>Pixelteca - Entrar ou Cadastrar</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        #message-area {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            padding: 10px;
+            border-radius: 5px;
+            display: none; 
+        }
+        #message-area.success {
+            background-color: #2a4b2a;
+            color: #7ed321;
+            display: block;
+        }
+        #message-area.error {
+            background-color: #4b2a2a;
+            color: #e24a4a;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -19,6 +39,8 @@
                 <button class="tab-button" id="register-tab">Cadastrar</button>
             </div>
             
+            <div id="message-area"></div>
+
             <form id="login-form" class="auth-form active">
                 <div class="input-group">
                     <label for="login-email">E-mail ou Usuário</label>
@@ -43,11 +65,11 @@
                 </div>
                 <div class="input-group">
                     <label for="register-password">Senha</label>
-                    <input type="password" id="register-password" name="password" placeholder="••••••••" required>
+                    <input type="password" id="register-password" name="password" placeholder="Min. 6 caracteres" required>
                 </div>
                 <div class="input-group">
                     <label for="register-confirm-password">Confirmar Senha</label>
-                    <input type="password" id="register-confirm-password" name="confirmPassword" placeholder="••••••••" required>
+                    <input type="password" id="register-confirm-password" name="confirmPassword" placeholder="Repita a senha" required>
                 </div>
                 <button type="submit" class="submit-button">Cadastrar</button>
             </form>
@@ -59,12 +81,19 @@
         const registerTab = document.getElementById('register-tab');
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
+        const messageArea = document.getElementById('message-area');
+
+        function showMessage(message, isError = false) {
+            messageArea.textContent = message;
+            messageArea.className = isError ? 'error' : 'success';
+        }
 
         loginTab.addEventListener('click', () => {
             loginTab.classList.add('active');
             registerTab.classList.remove('active');
             loginForm.classList.add('active');
             registerForm.classList.remove('active');
+            messageArea.style.display = 'none'; 
         });
 
         registerTab.addEventListener('click', () => {
@@ -72,6 +101,71 @@
             loginTab.classList.remove('active');
             registerForm.classList.add('active');
             loginForm.classList.remove('active');
+            messageArea.style.display = 'none'; 
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+            const formData = new FormData(loginForm);
+            formData.append('action', 'login'); 
+
+            try {
+                const response = await fetch('auth.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('Login com sucesso! A redirecionar...', false);
+                    setTimeout(() => {
+                        window.location.href = 'rate.html'; 
+                    }, 1500);
+                } else {
+                    showMessage(result.message, true);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                showMessage('Ocorreu um erro de rede.', true);
+            }
+        });
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                showMessage('As senhas não coincidem!', true);
+                return;
+            }
+            if (password.length < 6) {
+                showMessage('A senha deve ter pelo menos 6 caracteres.', true);
+                return;
+            }
+
+            const formData = new FormData(registerForm);
+            formData.append('action', 'register'); 
+
+            try {
+                const response = await fetch('auth.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('Registo com sucesso! Pode fazer login.', false);
+                    registerForm.reset();
+                    loginTab.click();
+                } else {
+                    showMessage(result.message, true);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                showMessage('Ocorreu um erro de rede.', true);
+            }
         });
     </script>
 </body>
