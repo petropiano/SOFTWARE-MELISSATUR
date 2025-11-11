@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixelteca - Avaliar Jogos</title>
     <style>
-        /* Retained and adapted your original CSS variables and styles */
         :root {
             --bg-color: #0a101e;
             --card-bg: #21213b;
@@ -179,10 +178,9 @@
     <script>
         let selectedGame = null;
 
-        // Fetch games from PHP
         async function fetchGames() {
             try {
-                const response = await fetch('fetch-games.php');
+                const response = await fetch('rate.php');
                 const games = await response.json();
                 displayGames(games);
             } catch (error) {
@@ -191,7 +189,6 @@
             }
         }
 
-        // Display games list
         function displayGames(games) {
             const gamesList = document.getElementById('games-list');
             gamesList.innerHTML = '';
@@ -209,18 +206,15 @@
             });
         }
 
-        // Select game and show rating section
         function selectGame(game) {
             selectedGame = game;
             document.getElementById('selected-game').innerHTML = `<h2>${game.name}</h2>`;
             document.getElementById('rating-section').style.display = 'block';
-            // Reset rating
             document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
             document.querySelector('.rating').dataset.rating = 0;
             document.querySelector('textarea').value = '';
         }
 
-        // Star rating logic
         document.querySelectorAll('.star').forEach(star => {
             star.addEventListener('click', function() {
                 const rating = this.dataset.value;
@@ -234,7 +228,6 @@
             });
         });
 
-        // Submit rating
         document.getElementById('submit-rating').addEventListener('click', async () => {
             const rating = document.querySelector('.rating').dataset.rating || 0;
             const review = document.querySelector('textarea').value.trim();
@@ -243,7 +236,7 @@
                 return;
             }
             try {
-                const response = await fetch('fetch-games.php', {
+                const response = await fetch('rate.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ game: selectedGame.name, rating: parseInt(rating), review })
@@ -251,7 +244,6 @@
                 const result = await response.json();
                 if (result.success) {
                     alert('Avaliação enviada com sucesso!');
-                    // Reset
                     document.getElementById('rating-section').style.display = 'none';
                     selectedGame = null;
                 } else {
@@ -263,7 +255,6 @@
             }
         });
 
-        // Load games on page load
         fetchGames();
     </script>
 </body>
